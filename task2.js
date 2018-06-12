@@ -1,12 +1,13 @@
-let d = +process.argv[2];
-let m = process.argv[3];
-let y = +process.argv[4];
+var month = {'января': 0, 'февраля': 1, 'марта': 2, 'апреля': 3, 'мая': 4, 'июня': 5, 'июля': 6, 'августа': 7, 'сентября': 8, 'октября': 9, 'ноября': 10, 'декабря': 11};
 
-let month = {'января': 0, 'февраля': 1, 'марта': 2, 'апреля': 3, 'мая': 4, 'июня': 5, 'июля': 6, 'августа': 7, 'сентября': 8, 'октября': 9, 'ноября': 10, 'декабря': 11};
+function daysCounter(d, m, y) {  
+  var now = new Date(y, month[m], d); 
+  var newYear = new Date(y + 1, 0, 0); 
+  var msPerDay = 3600 * 24 * 1000; 
+  var period = (newYear - now) / msPerDay; 
+  process.stdout.write(period);
+} 
 
-let now = new Date(y, month[m], d);			 
-let newYear = new Date(y + 1, 0, 0);
+daysCounter(process.argv[2], process.argv[3], process.argv[4]);
 
-let period = (newYear - now) / (3600 * 24 * 1000);
 
-process.stdout.write(period);
